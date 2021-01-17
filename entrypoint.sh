@@ -2,7 +2,7 @@
 
 set -e
 
-echo "REPO: $GITHUB_REPOSITORY"
+echo "REPO: $GITHUB_REPO_DEST"
 echo "ACTOR: $GITHUB_ACTOR"
 
 echo '=================== Install Requirements ==================='
@@ -12,7 +12,7 @@ pelican content -o output -s ${PELICAN_CONFIG_FILE:=pelicanconf.py}
 echo '=================== Publish to GitHub Pages ==================='
 cd output
 # shellcheck disable=SC2012
-remote_repo="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+remote_repo="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPO_DEST}.git"
 remote_branch=${GH_PAGES_BRANCH:=gh-pages}
 git init
 git remote add deploy "$remote_repo"

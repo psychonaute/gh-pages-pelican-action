@@ -10,6 +10,9 @@ runs:
   image: 'Dockerfile'
 
 inputs:
+  GITHUB_REPO_DEST:
+    description: 'Repo destination where the site will be deploy'
+    required: true
   GH_PAGES_BRANCH:
     description: 'override the default `gh-pages` deployment branch'
     required: false
@@ -18,3 +21,5 @@ inputs:
     description: 'override the default `pelicanconf.py` config file'
     required: false
     default: pelicanconf.py
+
+
