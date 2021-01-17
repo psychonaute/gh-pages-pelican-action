@@ -7,8 +7,6 @@ echo "ACTOR: $GITHUB_ACTOR"
 
 echo '=================== Install Requirements ==================='
 pip install -r requirements.txt
-npm install -g uglify-js
-npm install -g less
 echo '=================== location npm bin ==================='
 which lessc
 which uglifyjs
