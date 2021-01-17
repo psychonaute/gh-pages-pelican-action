@@ -7,6 +7,8 @@ echo "ACTOR: $GITHUB_ACTOR"
 
 echo '=================== Install Requirements ==================='
 pip install -r requirements.txt
+npm install -g uglify-js
+npm install -g less
 echo '=================== Build site ==================='
 pelican content -o output -s ${PELICAN_CONFIG_FILE:=pelicanconf.py}
 echo '=================== Publish to GitHub Pages ==================='
