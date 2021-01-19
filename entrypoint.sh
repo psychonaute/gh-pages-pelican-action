@@ -6,13 +6,19 @@ echo "REPO: $GITHUB_REPO_DEST"
 echo "ACTOR: $GITHUB_ACTOR"
 
 echo '=================== Install Requirements ==================='
+echo '--- npm packages ---'
+apt update
+apt-get install -y npm
+npm install -g less
+npm install -g uglify-js
+echo '--- pip requirements ---'
 pip install -r requirements.txt
 echo '=================== Build site ==================='
 pelican content -o output -s ${PELICAN_CONFIG_FILE:=pelicanconf.py}
 echo '=================== Publish to GitHub Pages ==================='
 cd output
 # shellcheck disable=SC2012
-remote_repo="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPO_DEST}.git"
+remote_repo="https://${GITHUB_API_TOKEN}@github.com/${GITHUB_REPO_DEST}.git"
 remote_branch=${GH_PAGES_BRANCH:=gh-pages}
 git init
 git remote add deploy "$remote_repo"
